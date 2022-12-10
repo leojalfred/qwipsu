@@ -27,6 +27,15 @@ export const RouterHead = component$(() => {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"
       />
+      <link
+        rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        as="style"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      />
 
       {head.meta.map(m => (
         <meta {...m} />

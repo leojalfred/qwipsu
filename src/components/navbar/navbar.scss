@@ -1,0 +1,28 @@
+@use '/src/variables' as *;
+
+.navbar {
+  background: $blue-dark;
+  padding: 1rem 2rem;
+
+  &__wrapper {
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    max-width: 79rem;
+  }
+
+  &__logo-link {
+    line-height: 0;
+  }
+
+  &__logo {
+    width: 6rem;
+  }
+
+  &__account {
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-left: auto;
+  }
+}

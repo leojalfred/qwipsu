@@ -1,23 +1,17 @@
 @use './variables' as *;
 @use './mixins' as *;
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 html {
   background-color: $gray-light;
   box-sizing: border-box;
   font-family: $font;
   font-size: 16px;
-  padding: 1rem;
-}
-
-textarea {
-  font-family: $font;
-  font-size: 1rem;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
 }
 
 body,
@@ -35,9 +29,8 @@ ul {
   font-weight: normal;
 }
 
-ol,
-ul {
-  list-style: none;
+main {
+  padding: 1rem;
 }
 
 img {
@@ -45,8 +38,22 @@ img {
   height: auto;
 }
 
+ol,
+ul {
+  list-style: none;
+}
+
+textarea {
+  font-family: $font;
+  font-size: 1rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
 @include breakpoint($s) {
-  html {
+  main {
     padding: 2rem;
   }
 }
