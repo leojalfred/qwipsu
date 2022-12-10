@@ -1,11 +1,17 @@
 @use './variables' as *;
+@use './mixins' as *;
 
 html {
   background-color: $gray-light;
   box-sizing: border-box;
   font-family: $font;
   font-size: 16px;
-  padding: 2rem;
+  padding: 1rem;
+}
+
+textarea {
+  font-family: $font;
+  font-size: 1rem;
 }
 
 *,
@@ -37,4 +43,10 @@ ul {
 img {
   max-width: 100%;
   height: auto;
+}
+
+@include breakpoint($s) {
+  html {
+    padding: 2rem;
+  }
 }

@@ -1,3 +1,5 @@
+@use '/src/variables' as *;
+
 .dialogue {
   background-color: white;
   border-radius: 0.5rem;
@@ -7,4 +9,58 @@
   max-width: 100%;
   padding: 2rem;
   width: 40rem;
+
+  &__input {
+    border-color: $gray;
+    border-radius: 0.25rem;
+    outline: none;
+    padding: 0.5rem;
+    resize: none;
+    width: 100%;
+  }
+
+  &__bottomline {
+    align-items: center;
+    display: flex;
+    justify-content: end;
+  }
+
+  &__counter {
+    font-size: 0.8rem;
+
+    &--over {
+      color: $red;
+    }
+  }
+
+  &__send {
+    background-color: $blue;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+
+    &:not(:disabled) {
+      box-shadow: $shadow-m;
+
+      &:hover {
+        background-color: $blue-dark;
+        box-shadow: $shadow-l;
+      }
+
+      &:active {
+        box-shadow: $shadow;
+        transform: translateY(0.25rem);
+      }
+    }
+
+    &:disabled {
+      background-color: $gray;
+      cursor: initial;
+    }
+  }
 }

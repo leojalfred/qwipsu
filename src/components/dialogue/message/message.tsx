@@ -1,13 +1,8 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik'
 import style from './message.scss?inline'
 
-export enum MessageType {
-  Message = 'message',
-  Reply = 'reply'
-}
-
 export interface MessageProps {
-  type: MessageType
+  type: 'message' | 'reply'
   name: string
   text: string
   date: Date
