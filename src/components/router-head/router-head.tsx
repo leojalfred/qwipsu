@@ -19,8 +19,13 @@ export const RouterHead = component$(() => {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
+        rel="preload"
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"
+        as="style"
+      />
+      <link
         rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"
       />
 
       {head.meta.map(m => (
