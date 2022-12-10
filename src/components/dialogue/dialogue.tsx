@@ -31,7 +31,6 @@ export default component$(() => {
       date: new Date()
     }
   ])
-  const messages = messageData.map((props, i) => <Message key={i} {...props} />)
 
   const input = useStore({
     text: '',
@@ -71,7 +70,9 @@ export default component$(() => {
 
   return (
     <div class="dialogue">
-      {messages}
+      {messageData.map((props, i) => (
+        <Message key={i} {...props} />
+      ))}
 
       <form
         class="dialogue__form"
