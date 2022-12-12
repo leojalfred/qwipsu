@@ -7,9 +7,10 @@ import {
 } from '@builder.io/qwik'
 import style from './dialogue.scss?inline'
 import Message, { MessageProps } from './message/message'
+import Button from '~/components/button/button'
 
 export default component$(() => {
-  useStylesScoped$(style)
+  const { scopeId } = useStylesScoped$(style)
 
   const messageData = useStore<MessageProps[]>([
     {
@@ -34,11 +35,11 @@ export default component$(() => {
 
   const input = useStore({
     text: '',
-    count: '160'
+    count: '160',
+    disabled: true
   })
   const textarea = useSignal<HTMLTextAreaElement>()
   const counter = useSignal<HTMLSpanElement>()
-  const send = useSignal<HTMLButtonElement>()
 
   useWatch$(({ track }) => {
     track(() => input.text)
@@ -46,19 +47,18 @@ export default component$(() => {
     const { length } = input.text
     if (length > 1120) {
       counter.value?.classList.add('dialogue__counter--over')
-      if (send.value) send.value.disabled = true
-
       input.count = (1120 - length).toString()
+      input.disabled = true
 
       return
     }
 
     counter.value?.classList.remove('dialogue__counter--over')
-    if (send.value) send.value.disabled = false
+    input.disabled = false
 
     if (length <= 160) {
       input.count = (160 - length).toString()
-      if (length === 0 && send.value) send.value.disabled = true
+      if (length === 0) input.disabled = true
 
       return
     }
@@ -103,9 +103,11 @@ export default component$(() => {
           <p class="dialogue__counter" ref={counter}>
             {input.count}
           </p>
-          <button class="dialogue__send" ref={send} disabled>
-            Send
-          </button>
+          <Button
+            className={`${scopeId} dialogue__send`}
+            disabled={input.disabled}
+            text="Send"
+          />
         </div>
       </form>
     </div>
