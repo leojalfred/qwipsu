@@ -1,9 +1,11 @@
 @use '/src/variables' as *;
+@use '/src/mixins' as *;
 
 .login {
   background-color: white;
   border-radius: 0.5rem;
   margin: auto;
+  max-width: 100%;
   padding: 2rem;
   position: relative;
   width: 40rem;
@@ -13,11 +15,11 @@
     border-radius: 0.5rem;
     box-shadow: $shadow-l;
     color: white;
-    font-size: 2.5rem;
-    padding: 1rem;
+    font-size: 1.5rem;
+    padding: 0.75rem;
     position: absolute;
-    right: -1rem;
-    top: -1rem;
+    right: -0.5rem;
+    top: -0.5rem;
   }
 
   &__heading {
@@ -26,9 +28,17 @@
   }
 
   &__button {
-    // font-weight: bold;
     margin-top: 1.5rem;
     padding: 0.75rem 1rem;
     width: 100%;
+  }
+}
+
+@include breakpoint($s) {
+  .login__icon {
+    font-size: 2.5rem;
+    padding: 1rem;
+    right: -1rem;
+    top: -1rem;
   }
 }
