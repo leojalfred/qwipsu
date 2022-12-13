@@ -22,17 +22,22 @@ export default component$(() => {
 
   useWatch$(({ track }) => {
     track(() => login.username)
-    track(() => login.password)
+    // track(() => login.password)
 
-    login.disabled = !(login.username.length > 0 && login.password.length > 0)
+    login.disabled = login.username.length === 0
   })
 
   return (
     <div
       class="login"
       preventdefault:submit
-      onSubmit$={() => {
+      onSubmit$={async () => {
         console.log(login.username, login.password)
+
+        const workspaces = await fetch(
+          `https://users-dev.kipsu.com/KipsuUsers/${login.username}`
+        )
+        console.log(workspaces)
       }}
     >
       <Icon class={`${scopeId} login__icon`} icon="login" />
@@ -48,7 +53,7 @@ export default component$(() => {
           })}
           icon="input"
         />
-        <Input
+        {/* <Input
           id="password"
           label="Password"
           type="password"
@@ -57,7 +62,7 @@ export default component$(() => {
             login.password = (event.target as HTMLInputElement).value
           })}
           icon="password"
-        />
+        /> */}
         <Button
           className={`${scopeId} login__button`}
           disabled={login.disabled}
